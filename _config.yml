@@ -1,7 +1,9 @@
+# SITE CONFIGURATION
+baseurl: ""
+url: "https://adelra.github.io/blog"
 excerpt_separator: ""
 highlighter: rouge
 markdown: kramdown
-url: http://blog.adelr.ir
 title: lingu
 tagline: log
 description: Lingu.log is adel's personal thoughts on science, technology, arts, and linguistics.
