@@ -1,5 +1,5 @@
 # SITE CONFIGURATION
-url: "/blog"
+url: /blog
 excerpt_separator: ""
 highlighter: rouge
 markdown: kramdown
