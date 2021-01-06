@@ -1,5 +1,5 @@
 # SITE CONFIGURATION
-url: "https://adelra.github.io/blog"
+url: "/blog"
 excerpt_separator: ""
 highlighter: rouge
 markdown: kramdown
