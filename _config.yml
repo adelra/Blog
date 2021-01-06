@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
-baseurl: ""
-url: "https://adelra.github.io/blog"
+baseurl: "/blog"
+url: "https://adelra.github.io"
 excerpt_separator: ""
 highlighter: rouge
 markdown: kramdown
