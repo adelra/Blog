@@ -1,0 +1,13 @@
+excerpt_separator: ""
+highlighter: rouge
+markdown: kramdown
+url: http://blog.adelr.ir
+title: lingu
+tagline: log
+description: Lingu.log is adel's personal thoughts on science, technology, arts, and linguistics.
+paginate: 5
+google_analytics:
+    tracking_id: UA-68526002-2
+custom_js:
+- jquery.min
+- lstfm

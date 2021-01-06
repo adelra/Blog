@@ -1,0 +1,77 @@
+---
+published: True
+title: Common Python/Machine Learning problems
+layout: post
+---
+**Introduction**
+
+In this post I decided to put on some tips and tricks and some hotfixes that I encounter while developing Neural Networks/Machine Learning projects. Most of these problems are easy to fix but a headache while working!
+
+**sparse_softmax_cross_entropy's loss is NaN, what's going on?**
+
+When sparse_softmax_cross_entropy's loss is nan or going up, you'd have to use a lower learning rate. This NaN is due to the fact that your loss is going really up.
+an example is shown below, CIFAR-10 dataset with CNN and 2 layer FC:
+```
+Iter 0, Loss= 22932.830078, Training Accuracy= 0.13000
+Iter 0, Loss= 5908024.500000, Training Accuracy= 0.12000
+Iter 0, Loss= 128835657728.000000, Training Accuracy= 0.18000
+Iter 0, Loss= 16028694803369689088.000000, Training Accuracy= 0.12000
+Iter 0, Loss= 392477918453616813397006876672.000000, Training Accuracy= 0.13000
+Iter 0, Loss= nan, Training Accuracy= 0.06000
+Iter 0, Loss= nan, Training Accuracy= 0.15000
+Iter 0, Loss= nan, Training Accuracy= 0.13000
+```
+
+**Data generator only returns same value**
+
+This might be the case that everytime you are calling the data generator you are calling the function itself:
+```
+def mygen():
+    for i in range(5):
+        yield i
+```
+
+Everytime you run ```next(mygen())``` you will see the first item generated. What you have to do is to put mygen() into a variable and then call that variable.
+```
+>def mygen():
+>    for i in range(5):
+>        yield i
+
+>gen = mygen()
+>next(gen)
+Out[16]: 0
+>next(gen)
+Out[17]: 1
+>next(gen)
+Out[18]: 2
+>next(gen)
+Out[19]: 3
+>next(gen)
+Out[20]: 4
+>next(gen)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/IPython/core/interactiveshell.py", line 2961, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-21-6e72e47198db>", line 1, in <module>
+    next(gen)
+StopIteration
+
+```
+
+**Keras output layer shape error**
+
+Error when checking model target: expected <output layer> to have shape (None, 10) but got array with shape (<SomeNumber>, 1) #3109
+
+This error most times is due to the fact that the output layer expects data to be categorical one-hot vectors. For instance use: ```Keras.utils.np_utils.to_categorical```
+
+
+**Regularization in RNNs**
+
+Using regularization in RNNs is not that common and mostly you'll get worse results (according to Andrej Karpathy in cs231n)
+
+**Keras fit_generator**
+
+It always accepts a tuple:
+
+* a tuple (inputs, labels)
+* a tuple (inputs, labels, sample_weights).
