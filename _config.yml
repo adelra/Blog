@@ -1,5 +1,4 @@
 # SITE CONFIGURATION
-url: http://google.com 
 excerpt_separator: ""
 highlighter: rouge
 markdown: kramdown
